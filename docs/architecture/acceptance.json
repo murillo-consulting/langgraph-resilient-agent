@@ -3,8 +3,8 @@
   "renderer": "Archify 2.17",
   "source_revision": "0dfc29c8c8f6a6ea02812a69ae9a63b8bd7b43f5",
   "specification": {
-    "sha256": "cc2ea0deb0ed43f980744d106c443b786bec80023ca8869d4a5b50101a31f6fa",
-    "bytes": 3619
+    "sha256": "832fdc6de25d61e1fb602d15439cdb782b40895559617dbfdb41aa62f79ef2ca",
+    "bytes": 3439
   },
   "artifact": {
     "sha256": "0792e343aa2962d8412f063305f678976f4ca9842a1e529dff8e57025add23bd",
@@ -39,5 +39,6 @@
   ],
   "visual_review": "passed",
   "visual_review_scope": "Image-capable review of READ/Still light and dark screenshots at 1440x900 and 2048x1320: node/text fit, route labels, no crossings, balanced composition. Interactive controls and exports not manually exercised.",
-  "correction_rounds": 1
+  "correction_rounds": 1,
+  "git_bytes_verified": true
 }
