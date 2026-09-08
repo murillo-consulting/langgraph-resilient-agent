@@ -102,3 +102,7 @@ See [the primary-source research notes](docs/reference-research.md) for the prod
 ## License
 
 MIT
+
+## Architecture interactive
+
+[Carte Archify et sources vérifiées](docs/architecture/README.md).

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "langgraph-resilient-agent — architecture",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1090,
+      540
+    ],
+    "repository": {
+      "url": "https://github.com/murillo-consulting/langgraph-resilient-agent",
+      "revision": "0dfc29c8c8f6a6ea02812a69ae9a63b8bd7b43f5",
+      "provider": "github"
+    }
+  },
+  "components": [
+    {
+      "id": "component-0",
+      "type": "frontend",
+      "label": "API FastAPI",
+      "sublabel": "Démarrage et reprise",
+      "pos": [
+        50,
+        65
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/app.py",
+          "line": 34,
+          "end_line": 42
+        }
+      ]
+    },
+    {
+      "id": "component-1",
+      "type": "backend",
+      "label": "RunService",
+      "sublabel": "Identité et idempotence",
+      "pos": [
+        425,
+        65
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/service.py",
+          "line": 16,
+          "end_line": 24
+        }
+      ]
+    },
+    {
+      "id": "component-2",
+      "type": "backend",
+      "label": "Graphe LangGraph",
+      "sublabel": "Classification déterministe",
+      "pos": [
+        800,
+        65
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/graph.py",
+          "line": 16,
+          "end_line": 24
+        }
+      ]
+    },
+    {
+      "id": "component-3",
+      "type": "security",
+      "label": "Approbation",
+      "sublabel": "Interrupt avant effet sensible",
+      "pos": [
+        800,
+        365
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/graph.py",
+          "line": 41,
+          "end_line": 49
+        }
+      ]
+    },
+    {
+      "id": "component-4",
+      "type": "database",
+      "label": "Données métier",
+      "sublabel": "Opération unique et audit",
+      "pos": [
+        425,
+        365
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/persistence.py",
+          "line": 12,
+          "end_line": 20
+        }
+      ]
+    },
+    {
+      "id": "component-5",
+      "type": "database",
+      "label": "Checkpoints SQLite",
+      "sublabel": "Reprise du même thread",
+      "pos": [
+        50,
+        365
+      ],
+      "size": [
+        235,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/resilient_agent/app.py",
+          "line": 11,
+          "end_line": 19
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "edge-0-1",
+      "from": "component-0",
+      "to": "component-1",
+      "label": "HTTP"
+    },
+    {
+      "id": "edge-1-2",
+      "from": "component-1",
+      "to": "component-2",
+      "label": "invoke"
+    },
+    {
+      "id": "edge-2-3",
+      "from": "component-2",
+      "to": "component-3",
+      "label": "sensible",
+      "labelDy": 60
+    },
+    {
+      "id": "edge-1-4",
+      "from": "component-1",
+      "to": "component-4",
+      "label": "transaction",
+      "labelDy": 60
+    },
+    {
+      "id": "edge-0-5",
+      "from": "component-0",
+      "to": "component-5",
+      "label": "initialise",
+      "labelDy": 60
+    }
+  ]
+}
